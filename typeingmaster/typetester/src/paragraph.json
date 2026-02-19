@@ -1,0 +1,51 @@
+{
+  "passages": [
+    {
+      "id": 1,
+      "difficulty": "easy",
+      "text": "Typing regularly helps improve speed and accuracy. Practice every day to become faster and more confident while using the keyboard."
+    },
+    {
+      "id": 2,
+      "difficulty": "easy",
+      "text": "Learning to type quickly is a useful skill for students and professionals. Consistent practice leads to better performance."
+    },
+    {
+      "id": 3,
+      "difficulty": "easy",
+      "text": "Short typing exercises help build muscle memory and reduce mistakes while writing emails or coding programs."
+    },
+
+    {
+      "id": 4,
+      "difficulty": "medium",
+      "text": "Web developers often type large amounts of code, documentation, and messages. Improving typing speed can significantly increase productivity."
+    },
+    {
+      "id": 5,
+      "difficulty": "medium",
+      "text": "Building real projects instead of only watching tutorials helps developers gain confidence and practical problem solving experience."
+    },
+    {
+      "id": 6,
+      "difficulty": "medium",
+      "text": "React applications rely on reusable components and efficient state management to deliver smooth user experiences across devices."
+    },
+
+    {
+      "id": 7,
+      "difficulty": "hard",
+      "text": "Mastering typing speed requires patience, concentration, and consistent correction of mistakes, ensuring accuracy improves alongside faster keystrokes."
+    },
+    {
+      "id": 8,
+      "difficulty": "hard",
+      "text": "Modern software engineers must balance performance optimization, scalability considerations, and user-friendly design while building applications."
+    },
+    {
+      "id": 9,
+      "difficulty": "hard",
+      "text": "Efficient programmers develop habits of writing clean, maintainable code while continuously refining debugging and analytical thinking abilities."
+    }
+  ]
+}
