@@ -1,0 +1,10 @@
+.correct {
+  color: green;
+}
+
+.incorrect {
+  color: red;
+}
+.current {
+  border-left: 2px solid black;
+}

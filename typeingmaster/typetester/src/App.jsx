@@ -1,46 +1,81 @@
-import {  useState } from "react";
-import data from "./paragraph.json"
+import { useState } from "react";
+import data from "./paragraph.json";
+import "./App.css";
+
 function App() {
- const[difficulty ,setdifficulty] = useState("easy")
- const [passages ,setpassage] = useState("")
- const [userinp ,setuserinp] = useState("")
+  /* ================= STATE ================= */
 
-const generate_passage = ()=>{
- const filter = data.passages.filter((e)=>{
-    return e.difficulty === difficulty
- })
- const random = Math.floor(Math.random() * filter.length)
- const randomepsg = filter[random].text;
- setpassage(randomepsg)
-}
-const characters = passages.split("")
+  const [difficulty, setDifficulty] = useState("easy");
+  const [passage, setPassage] = useState("");
+  const [userInput, setUserInput] = useState("");
+  const [isstarted, setisstarted] = useState(false);
+  const [isfinished, setisfinished] = useState(false);
 
- 
+  /* ============== FUNCTIONS ============== */
+
+  const generatePassage = () => {
+    setisstarted(true);
+    const filtered = data.passages.filter((p) => p.difficulty === difficulty);
+
+    if (filtered.length === 0) return;
+
+    const randomIndex = Math.floor(Math.random() * filtered.length);
+
+    setPassage(filtered[randomIndex].text);
+    setUserInput(""); // reset typing when new passage loads
+  };
+
+  /* ============== DERIVED DATA ============== */
+
+  const characters = passage.split("");
+
+  /* ================= UI ================= */
+
   return (
     <>
-      <h1>select you difficulty level </h1>
-      <select 
-      value={difficulty}
-      onChange={(e)=>{setdifficulty(e.target.value)}}
+      <h1>Select your difficulty level</h1>
+
+      <select
+        value={difficulty}
+        onChange={(e) => setDifficulty(e.target.value)}
       >
-        <option value="easy">easy</option>
-        <option value="medium">medium</option>
-        <option value="hard">hard</option>
+        <option value="easy">Easy</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
       </select>
-      <button onClick={generate_passage}>submit</button>
+
+      <button onClick={generatePassage}>Start</button>
+
       <div>
-        {
-        characters.map((e,i)=>{
-          return <span key={i}>{e}</span>
-        })
-      }
+        {characters.map((char, i) => {
+          let className = "";
+
+          if (i < userInput.length) {
+            className = userInput[i] === char ? "correct" : "incorrect";
+          } else if (i === userInput.length) {
+            className = "current";
+          }
+
+          return (
+            <span key={i} className={className}>
+              {char}
+            </span>
+          );
+        })}
       </div>
-      <div>
-        <input type="text" onChange={(e)=>{setuserinp(e.target.value)}} />
-      </div>
-  
+
+      <input
+        type="text"
+        value={userInput}
+        disabled={!isstarted}
+        onChange={(e) => {
+          if (!isstarted) setisstarted(true);
+          setUserInput(e.target.value);
+          if (e.target.value.length === passage.length) setisfinished(true);
+        }}
+      />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
